@@ -1,0 +1,18 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ArchiveLayout from '../../components/ArchiveLayout.astro';
+import RoomCard from '../../components/RoomCard.astro';
+import { rooms } from '../../data/rooms';
+---
+<Layout title="ROOM INDEX">
+  <ArchiveLayout title="ROOMS">
+    <section class="room-index-header">
+      <div class="section-title">ROOM INDEX</div>
+      <p>Each entry is a fragment of an unfinished model of place.</p>
+    </section>
+
+    <div class="room-grid room-grid-wide">
+      {rooms.map((room) => <RoomCard room={room} />)}
+    </div>
+  </ArchiveLayout>
+</Layout>

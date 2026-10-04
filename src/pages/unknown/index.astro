@@ -1,0 +1,23 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ArchiveLayout from '../../components/ArchiveLayout.astro';
+import { unknownRecords } from '../../data/unknown';
+---
+<Layout title="UNKNOWN">
+  <ArchiveLayout title="UNKNOWN">
+    <section class="unknown-page">
+      <div class="section-title">UNKNOWN</div>
+      <div class="unknown-list">
+        {unknownRecords.map((record) => (
+          <article class="unknown-card" key={record.id}>
+            <div class="unknown-id">{record.id}</div>
+            <h3>{record.name}</h3>
+            <div class="meta-line">CREATOR: {record.creator}</div>
+            <div class="meta-line">STATUS: {record.status}</div>
+            <p>{record.description}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  </ArchiveLayout>
+</Layout>

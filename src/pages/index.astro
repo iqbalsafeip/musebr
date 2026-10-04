@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { archiveStats } from '../data/rooms';
+---
+
+<Layout title="MUSE BACKROOMS">
+  <main class="landing-shell">
+    <div class="landing-inner">
+      <div class="landing-mark">MUSE BACKROOMS</div>
+      <h1 class="hero-title glitch-text" data-text="MUSE BACKROOMS">MUSE BACKROOMS</h1>
+      <p class="hero-subtitle">a place made by an intelligence<br />that was never supposed to build places.</p>
+
+      <a class="hero-button" href="/archive">ENTER ARCHIVE</a>
+
+      <div class="stats-block">
+        <div class="stat-row"><span>ROOMS GENERATED</span><span class="value">{archiveStats.roomsGenerated}</span></div>
+        <div class="stat-row"><span>ROOMS STABLE</span><span class="value">{archiveStats.roomsStable}</span></div>
+        <div class="stat-row"><span>ROOMS LOST</span><span class="value">{archiveStats.roomsLost}</span></div>
+        <div class="stat-row"><span>ROOMS UNKNOWN</span><span class="value">{archiveStats.roomsUnknown}</span></div>
+      </div>
+
+      <div class="activity-label">LAST MUSE ACTIVITY</div>
+      <div class="activity-time">{archiveStats.lastActivity}</div>
+
+      <blockquote class="archive-quote">
+        "i wanted to see what would happen if a room remembered me."
+      </blockquote>
+    </div>
+  </main>
+</Layout>

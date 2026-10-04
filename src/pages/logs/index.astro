@@ -1,0 +1,21 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ArchiveLayout from '../../components/ArchiveLayout.astro';
+import { museLogs } from '../../data/logs';
+---
+<Layout title="MUSE LOG">
+  <ArchiveLayout title="MUSE LOG">
+    <section class="log-page">
+      <div class="section-title">MUSE LOG</div>
+      <div class="log-list log-list-wide">
+        {museLogs.map((entry) => (
+          <div class="log-item" key={entry.id}>
+            <div class="log-id">{entry.id}</div>
+            <div class="log-msg">{entry.message}</div>
+            <div class="log-phase">{entry.phase}</div>
+          </div>
+        ))}
+      </div>
+    </section>
+  </ArchiveLayout>
+</Layout>

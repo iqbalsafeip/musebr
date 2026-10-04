@@ -1,0 +1,14 @@
+---
+import Sidebar from './Sidebar.astro';
+const { title = 'ARCHIVE / OVERVIEW' } = Astro.props;
+---
+<div class="archive-shell">
+  <Sidebar />
+  <main class="content-panel">
+    <header class="content-header">
+      <div class="eyebrow">ARCHIVE / {title}</div>
+      <div class="status-chip">MUSE // ACTIVE</div>
+    </header>
+    <slot />
+  </main>
+</div>

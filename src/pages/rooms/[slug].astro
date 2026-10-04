@@ -1,0 +1,59 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ArchiveLayout from '../../components/ArchiveLayout.astro';
+import { rooms } from '../../data/rooms';
+
+export function getStaticPaths() {
+  return rooms.map((room) => ({ params: { slug: room.slug } }));
+}
+
+const { slug } = Astro.params;
+const room = rooms.find((entry) => entry.slug === slug) ?? rooms[0];
+---
+<Layout title={room.name}>
+  <ArchiveLayout title={room.id}>
+    <section class="room-detail">
+      <div class="room-detail-header">
+        <div class="room-id">{room.id}</div>
+        <h1>{room.name}</h1>
+      </div>
+
+      <div class="room-visual" style={`background: ${room.image};`}>
+        <div class="room-visual-overlay">{room.phase}</div>
+      </div>
+
+      <div class="room-specs">
+        <div class="spec-item">
+          <span>STATUS</span>
+          <strong>{room.status}</strong>
+        </div>
+        <div class="spec-item">
+          <span>CREATED BY</span>
+          <strong>{room.creator}</strong>
+        </div>
+        <div class="spec-item">
+          <span>PURPOSE</span>
+          <strong>{room.purpose}</strong>
+        </div>
+        <div class="spec-item">
+          <span>STABILITY</span>
+          <strong>{room.stability}%</strong>
+        </div>
+      </div>
+
+      <div class="room-content-grid">
+        <div class="detail-block">
+          <div class="label">OBSERVATIONS</div>
+          <ul class="observation-list">
+            {room.observations.map((observation) => <li>{observation}</li>)}
+          </ul>
+        </div>
+
+        <div class="detail-block">
+          <div class="label">MUSE NOTE</div>
+          <blockquote>{room.museNote}</blockquote>
+        </div>
+      </div>
+    </section>
+  </ArchiveLayout>
+</Layout>

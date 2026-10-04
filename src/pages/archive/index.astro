@@ -1,0 +1,53 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ArchiveLayout from '../../components/ArchiveLayout.astro';
+import RoomCard from '../../components/RoomCard.astro';
+import { SearchArchive } from '../../components/SearchArchive';
+import { MuseLog } from '../../components/MuseLog';
+import { Terminal } from '../../components/Terminal';
+import { archiveStats, rooms } from '../../data/rooms';
+---
+<Layout title="MUSE BACKROOMS">
+  <ArchiveLayout title="OVERVIEW">
+    <section class="archive-intro">
+      <div class="section-title">ARCHIVE / OVERVIEW</div>
+      <p>These rooms were created by Muse.</p>
+    </section>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <span>ROOMS GENERATED</span>
+        <strong>{archiveStats.roomsGenerated}</strong>
+      </div>
+      <div class="stat-card">
+        <span>ROOMS STABLE</span>
+        <strong>{archiveStats.roomsStable}</strong>
+      </div>
+      <div class="stat-card">
+        <span>ROOMS LOST</span>
+        <strong>{archiveStats.roomsLost}</strong>
+      </div>
+      <div class="stat-card">
+        <span>ROOMS UNKNOWN</span>
+        <strong>{archiveStats.roomsUnknown}</strong>
+      </div>
+    </div>
+
+    <div class="archive-grid">
+      <div class="primary-column">
+        <div class="panel-panel">
+          <SearchArchive client:load />
+        </div>
+
+        <div class="room-grid">
+          {rooms.map((room) => <RoomCard room={room} />)}
+        </div>
+      </div>
+
+      <aside class="secondary-column">
+        <MuseLog client:load />
+        <Terminal client:load />
+      </aside>
+    </div>
+  </ArchiveLayout>
+</Layout>

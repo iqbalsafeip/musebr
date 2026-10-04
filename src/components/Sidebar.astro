@@ -1,0 +1,26 @@
+---
+const items = [
+  { label: 'ARCHIVE', href: '/archive' },
+  { label: 'ROOMS', href: '/rooms' },
+  { label: 'OBSERVATIONS', href: '/archive#observations' },
+  { label: 'MUSE LOG', href: '/logs' },
+  { label: 'LOST ROOMS', href: '/archive#lost' },
+  { label: 'UNKNOWN', href: '/unknown' }
+];
+---
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <div class="sidebar-mark">MUSE BACKROOMS</div>
+  </div>
+
+  <nav class="sidebar-nav" aria-label="Archive navigation">
+    {items.map((item) => (
+      <a class="sidebar-link" href={item.href}>{item.label}</a>
+    ))}
+  </nav>
+
+  <div class="sidebar-status">
+    <div class="sidebar-label">SYSTEM STATUS</div>
+    <div class="sidebar-value">MUSE // ACTIVE</div>
+  </div>
+</aside>

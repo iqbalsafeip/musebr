@@ -1,0 +1,13 @@
+---
+const { room } = Astro.props;
+---
+<a class="room-card" href={`/rooms/${room.slug}`}>
+  <div class="room-card-art" style={`background: ${room.image};`}></div>
+  <div class="room-card-inner">
+    <div class="room-card-id">{room.id}</div>
+    <h3>{room.name}</h3>
+    <div class="meta-line">STATUS: {room.status}</div>
+    <div class="meta-line">CREATOR: {room.creator}</div>
+    <p>{room.description}</p>
+  </div>
+</a>
